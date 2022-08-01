@@ -1,4 +1,6 @@
 import Calendar from "./Calendar";
+import Detail from "./Detail";
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -8,7 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* path경로에 따라 다른 컴포넌트 호출 */}
-          <Route path="/" element={<Calendar />}></Route> 
+          <Route path="/" element={<Calendar />}></Route>
+          <Route path="/detail/:id" element={<Detail />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

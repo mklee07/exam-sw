@@ -3,9 +3,11 @@ import { Icon } from '@iconify/react';
 import { format, addMonths, subMonths } from 'date-fns';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { isSameMonth, isSameDay, addDays, parse } from 'date-fns';
-import './style.scss'
+import { Link } from 'react-router-dom';
+import './_style.scss'
 
 
+//header 부분 년월, 버튼
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth, todayMonth}) => {
     return (
         <div className="header row">
@@ -26,6 +28,7 @@ const RenderHeader = ({ currentMonth, prevMonth, nextMonth, todayMonth}) => {
     );
 };
 
+//요일 부분
 const RenderDays = () => {
     const days = [];
     const date = ['Sun', 'Mon', 'Thu', 'Wed', 'Thrs', 'Fri', 'Sat'];
@@ -41,56 +44,61 @@ const RenderDays = () => {
     return <div className="days row">{days}</div>
 }
 
-const RenderCells = ({ currentMonth, selectdDate, onDateClick}) => {
-    const monthStart = startOfMonth(currentMonth);
-    const monthEnd = endOfMonth(monthStart);
-    const startDate = startOfWeek(monthStart);
-    const endDate = endOfWeek(monthEnd);
+//날짜 부분
+const RenderCells = ({ currentMonth, selectedDate, onDateClick}) => {
+    const monthStart = startOfMonth(currentMonth); //현재 선택한 달 1일
+    const monthEnd = endOfMonth(monthStart); //현재 선택한 달 마지막일
+    const startDate = startOfWeek(monthStart); //현재 선택한 달력 첫번째 일
+    const endDate = endOfWeek(monthEnd); //현재 선택한 달력 마지막 일
 
-    const rows = [];
+    const rows = []; 
     let days = [];
     let day = startDate;
     let formattedDate = '';
 
-    while (day <= endDate) {
-        for (let i = 0; i < 7; i++) {
-            formattedDate = format(day, 'd');
-            const cloneDay = day;
+    while (day <= endDate) { //달력 첫번째 일 부터 마지막일 까지
+        for (let i = 0; i < 7; i++) { //일~토 
+            formattedDate = format(day, 'd'); //날짜 문자열로 변환
+            const cloneDay = day; //startDate
             days.push(
-                <div
+                <div 
                     className={`col cell ${
-                        !isSameMonth(day, monthStart)
-                            ? 'disabled'
-                            :isSameDay(day, selectdDate)
-                            ? 'selected'
-                            : format(currentMonth, 'M') !== format(day, 'M')
-                            ? 'not-valid'
+                        !isSameMonth(day, monthStart) //이번달이 아니면
+                            ? 'disabled' //선택불가
+                            :isSameDay(day, selectedDate) //오늘이면
+                            ? 'selected' //css로 표시
+                            : format(currentMonth, 'M') !== format(day, 'M') //이번달이 아니면
+                            ? 'not-valid' //css로 회색 표시
                             : 'valid'
-
-                    }`
+                     }`
                     }
                     key={day}
-                    onClick={() => onDateClick(parse(cloneDay))}
+                    onClick={() => onDateClick(cloneDay)}
                 >
+                    <label for="${i}">
+                        </label>
+                    <Link to={`/detail/${formattedDate}`}>
                     <span
+                    id={i}
                         className={
-                            format(currentMonth, 'M') !== format(day, 'M')
-                            ? 'text not-valid'
-                            : ''
+                            format(currentMonth, 'M') !== format(day, 'M') //이번달이 아니면
+                            ? 'text not-valid date'
+                            : 'date'
                          }
                     >
-                        {formattedDate}
+                        {formattedDate}  
                      </span>   
+                    </Link>
                 </div>
             );
-            day = addDays(day, 1);
+            day = addDays(day, 1); //달력 첫 번째부터 날짜 +1
         };
-        rows.push(
+        rows.push( 
             <div className="row" key={day}>
-                {days}
+                {days} 
             </div>
         );
-        days = [];
+        days = []; //초기화
     }
     return <div className="body">{rows}</div>
 };
@@ -105,8 +113,9 @@ const Calendar = () => {
     const nextMonth = () => {
         setCurrentMonth(addMonths(currentMonth, 1));
     }
-    const onDateClick = (day) => {
-        setselectedDate(day);
+    const onDateClick = (e) => {
+        setselectedDate(e);
+        // <Link to={`/detail/${e.id}`}></Link>
     }
     const todayMonth = () => {
         setCurrentMonth(new Date());

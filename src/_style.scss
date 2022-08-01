@@ -47,7 +47,16 @@
             background: transparentize(theme.$step-color, 0.6);
             border-radius: 10px;
         }
+        
+        
     }
+    // .days.col:nth-child(7n + 1) {
+    //     color: red;
+    //   }
+      
+    // .days:nth-child(7n) {
+    //     color: blue;
+    // }
     .body {
         @include common.size(100%, 89%);
         @include common.flex-column();
@@ -89,5 +98,19 @@
                 font-weight: 600;
             }
         }
+    }
+    a:link {
+        text-decoration: none;
+      }
+    
+    a:hover {
+      color : black;
+      text-decoration: underline;
+
+    }
+
+    .date {
+    padding-right: 115px;
+    cursor: pointer;
     }
 }
