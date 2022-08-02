@@ -1,10 +1,12 @@
 @use '_theme.scss';
 @use '_common.scss' as common;
 .calendar {
-    @include common.size(100%, 100%);
+    @include common.size(100%, 90%);
+    height: 600px;
     .header {
         @include common.size(100%, 7%);
         @include common.flex-row(space-between, baseline);
+        margin-bottom: 25px;
         .col.col-first {
             @include common.size(80%, 100%);
             @include common.flex-column(center, flex-start);
@@ -15,7 +17,6 @@
             .text.month {
                 margin-right: 5px;
                 font-size: 1.6em;
-                font-weight: 600;
             }
         }
         .col.col-end {
@@ -121,5 +122,4 @@
     .date {
     cursor: pointer;
     }
-
 }
