@@ -16,8 +16,6 @@ const Calendar = () => {
     const nextMonth = () => {
         setCurrentMonth(addMonths(currentMonth, 1));
     }
-    const onDateClick = () => {
-    }
     const todayMonth = () => {
         setCurrentMonth(new Date());
     }
@@ -35,7 +33,6 @@ const Calendar = () => {
             <CalendarDate
                 currentMonth={currentMonth}
                 selectedDate={selectedDate}
-                onDateClick={onDateClick}
             />
         </div>
     )

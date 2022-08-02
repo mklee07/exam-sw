@@ -4,12 +4,12 @@ import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import { isSameMonth, isSameDay, addDays } from 'date-fns';
 import { Link } from 'react-router-dom';
 
-const CalendarDate = ({ currentMonth, selectedDate, onDateClick}) => {
+const CalendarDate = ({ currentMonth, selectedDate}) => {
     const monthStart = startOfMonth(currentMonth); //현재 선택한 달 1일
     const monthEnd = endOfMonth(monthStart); //현재 선택한 달 마지막일
     const startDate = startOfWeek(monthStart); //현재 선택한 달력 첫번째 일
     const endDate = endOfWeek(monthEnd); //현재 선택한 달력 마지막 일
-
+    
     const rows = []; 
     let days = [];
     let day = startDate;
@@ -32,7 +32,6 @@ const CalendarDate = ({ currentMonth, selectedDate, onDateClick}) => {
                     }
                     id={`${format(day, 'yyyy')}-${format(day, 'MM')}-${format(day, 'dd')}`}
                     key={day}
-                    onClick={() => onDateClick()}
                 >
                     <Link to={`/detail/${format(day, 'yyyy')}-${format(day, 'MM')}-${format(day, 'dd')}`}>
                     <span

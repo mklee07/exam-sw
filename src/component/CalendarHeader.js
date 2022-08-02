@@ -14,7 +14,7 @@ const CalendarHeader = ({currentMonth, setCurrentMonth, prevMonth, nextMonth, to
     
     //검색 값에 맞게 년 변경
     const onSearch = (e) => {
-        e.preventDefault(); // 이거 없으면 검색후 다시 화면이 새로고침됨
+        e.preventDefault(); // 링크 이동 동작을 막아줌
         setCurrentMonth(addMonths(currentMonth, (search - format(currentMonth, 'yyyy'))*12))
     }
 
