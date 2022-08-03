@@ -17,7 +17,7 @@ const CalendarDate = ({ currentMonth, selectedDate}) => {
         for (let i = 0; i < 7; i++) { //일~토 
             formattedDate = format(day, 'd'); //날짜 문자열로 변환
             days.push(
-                <div  
+                <div style={{fontSize :"15px"}}
                     className={`col cell ${
                     !isSameMonth(day, monthStart) //이번달이 아니면
                     ? 'disabled' //선택불가

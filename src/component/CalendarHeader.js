@@ -20,7 +20,7 @@ const CalendarHeader = ({currentMonth, setCurrentMonth, prevMonth, nextMonth, to
 
     return (
         <div className="header row">
-            <div className="col col-start">
+            <div className="col col-start" style={{fontSize :"25px"}} >
                 <span className="text">
                     {format(currentMonth, 'yyyy')}년
                 <span className="text month">

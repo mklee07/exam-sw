@@ -6,7 +6,7 @@
     .header {
         @include common.size(100%, 7%);
         @include common.flex-row(space-between, baseline);
-        margin-bottom: 25px;
+        margin-bottom: 35px;
         .col.col-first {
             @include common.size(80%, 100%);
             @include common.flex-column(center, flex-start);

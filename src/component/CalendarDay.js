@@ -7,7 +7,7 @@ const CalendarDay = () => {
 
     for (let i =0; i < 7; i++) {
         days.push(
-            <div className={`col ${
+            <div style={{fontSize :"20px"}} className={`col ${
                 i==0
                 ? 'sunday'
                 : i==6
