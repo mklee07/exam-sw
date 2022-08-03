@@ -15,7 +15,12 @@ const CalendarHeader = ({currentMonth, setCurrentMonth, prevMonth, nextMonth, to
     //검색 값에 맞게 년 변경
     const onSearch = (e) => {
         e.preventDefault(); // 링크 이동 동작을 막아줌
-        setCurrentMonth(addMonths(currentMonth, (search - format(currentMonth, 'yyyy'))*12))
+        if(search != '' && search != undefined && search != null && search != 0){
+            setCurrentMonth(addMonths(currentMonth, (Number(search) - format(currentMonth, 'yyyy'))*12))
+        } else {
+            // setCurrentMonth(currentMonth)
+            alert("년도를 입력하세요")
+        }
     }
 
     return (
@@ -28,7 +33,7 @@ const CalendarHeader = ({currentMonth, setCurrentMonth, prevMonth, nextMonth, to
                 </span>
                 </span>
                     <form onSubmit={e => onSearch(e)} className="search" >
-                        <input type="text" value={search} onChange={onChange} placeholder="ex) 2022"/>
+                        <input type="text" value={search} maxLength={4} onChange={onChange} placeholder="ex) 2022"/>
                         <button>Search</button>
                     </form>
             </div>

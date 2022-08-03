@@ -1,4 +1,4 @@
-import Calendar from "./Calendar";
+import Calendar from "./component/calendar/Calendar";
 import Detail from "./component/Detail";
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
