@@ -48,7 +48,16 @@
             background: transparentize(theme.$step-color, 0.6);
             border-radius: 10px;
         }
+        
+        
     }
+    // .days.col:nth-child(7n + 1) {
+    //     color: red;
+    //   }
+      
+    // .days:nth-child(7n) {
+    //     color: blue;
+    // }
     .body {
         @include common.size(100%, 89%);
         @include common.flex-column();
@@ -107,18 +116,10 @@
     }
 
     a{
+    // padding-right: 120px;
     @include common.size(100%, 100%);
     }
     .date {
     cursor: pointer;
     }
-
 }
-        
-// .sunday {
-//     color: red;
-// }
-// .saturday {
-//     color: blue;
-// }
-

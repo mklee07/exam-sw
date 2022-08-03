@@ -1,7 +1,9 @@
 import React from 'react';
-import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, isSameMonth, isSameDay, addDays } from 'date-fns';
+import { format } from 'date-fns';
+import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
+import { isSameMonth, isSameDay, addDays } from 'date-fns';
 import { Link } from 'react-router-dom';
-
+//test
 const CalendarDate = ({ currentMonth, selectedDate}) => {
     const monthStart = startOfMonth(currentMonth); //현재 선택한 달 1일
     const monthEnd = endOfMonth(monthStart); //현재 선택한 달 마지막일
@@ -20,12 +22,12 @@ const CalendarDate = ({ currentMonth, selectedDate}) => {
                 <div  
                     className={`col cell ${
                         !isSameMonth(day, monthStart) //이번달이 아니면
-                        ? 'disabled' 
-                        :isSameDay(day, selectedDate) //오늘이면
-                        ? 'selected'
-                        : format(currentMonth, 'M') !== format(day, 'M') //이번달이 아니면
-                        ? 'not-valid' 
-                        : 'valid'
+                            ? 'disabled' //선택불가
+                            :isSameDay(day, selectedDate) //오늘이면
+                            ? 'selected' //css로 표시
+                            : format(currentMonth, 'M') !== format(day, 'M') //이번달이 아니면
+                            ? 'not-valid' //css로 회색 표시
+                            : 'valid'
                      }`
                     }
                     id={`${format(day, 'yyyy')}-${format(day, 'MM')}-${format(day, 'dd')}`}
