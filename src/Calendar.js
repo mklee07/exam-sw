@@ -3,7 +3,7 @@ import { addMonths, subMonths } from 'date-fns';
 import CalendarHeader from './component/CalendarHeader';
 import CalendarDay from './component/CalendarDay'
 import CalendarDate from './component/CalendarDate';
-import './style/_style.scss'
+import './style/style.scss'
 
 const Calendar = () => {
 
