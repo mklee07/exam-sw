@@ -3,11 +3,17 @@ import React from 'react';
 
 const CalendarDay = () => {
     const days = [];
-    const date = ['Sun', 'Mon', 'Thu', 'Wed', 'Thrs', 'Fri', 'Sat'];
+    const date = ['Sun', 'Mon', 'Thu', 'Wed', 'Thr', 'Fri', 'Sat'];
 
     for (let i =0; i < 7; i++) {
         days.push(
-            <div className="col" key={i}>
+            <div className={`col ${
+                i==0
+                ? 'sunday'
+                : i==6
+                ? 'saturday'
+                : ''}`
+            } key={i}>
                 {date[i]}
             </div>
         );

@@ -51,13 +51,6 @@
         
         
     }
-    // .days.col:nth-child(7n + 1) {
-    //     color: red;
-    //   }
-      
-    // .days:nth-child(7n) {
-    //     color: blue;
-    // }
     .body {
         @include common.size(100%, 89%);
         @include common.flex-column();
@@ -122,4 +115,11 @@
     .date {
     cursor: pointer;
     }
+}
+
+.sunday {
+    color: red;
+}
+.saturday {
+    color: blue;
 }
